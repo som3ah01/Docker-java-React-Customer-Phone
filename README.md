@@ -36,7 +36,12 @@ Full-Stack java-React-PostgreSQL Customer Phone validation using Docker compose
 
  
  # To Build Docker and Compose
- > We Have to package our jar file
+ > We Have to package our jar file of the Back-End Server
+ 
+ ```
+ cd server
+ ```
+ Then
  ```
     mvn clean compile package
  ```
@@ -46,10 +51,15 @@ Full-Stack java-React-PostgreSQL Customer Phone validation using Docker compose
  ```
 
  > To build Compose file with
+ - Let's go to go Root Folder again
+```
+ cd ..
+ ```
+ Then
  ```
    docker-compose up --build
  ```
- > Wait until all up and running then to to front-end URL 
+ > Wait until all up and running then go to front-end URL 
  - http://localhost:3000/
  
  > To delete the contianers 
@@ -69,7 +79,8 @@ For Back-End navigate to sub Folder server
  ```
   ./mvnw spring-boot:run
  ```
- 
+ ![image](https://user-images.githubusercontent.com/3534572/157258491-a31d9281-a433-498d-8cff-43c054f82b82.png)
+
  
  > Thanks :+1: if you have any comments to share with me :shipit:  
  > By @Ismail Shebl
