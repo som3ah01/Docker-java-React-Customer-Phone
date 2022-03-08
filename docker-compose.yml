@@ -1,0 +1,51 @@
+version: '3.7'
+ 
+services:
+  dbCustomer:
+    image: postgres:alpine
+    container_name: db-customer-phone
+    environment:
+      POSTGRES_DB: AppsDb
+      POSTGRES_USER: app_user
+      POSTGRES_PASSWORD: apps_password
+    ports:
+      - 5432:5432
+    volumes:
+      - dbdata:/var/lib/postgres
+      - ./sql/:/docker-entrypoint-initdb.d
+    networks: 
+      - wpsite
+  serverapi:
+    container_name: server-api-customer-phone
+    depends_on:
+      - dbCustomer
+    build: 
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - '8081:8081'
+    environment:
+      - DATABASE_HOST=dbCustomer
+      - DATABASE_USER=app_user
+      - DATABASE_PASSWORD=apps_password
+      - DATABASE_NAME=AppsDb
+      - DATABASE_PORT=5432
+    networks: 
+      - wpsite
+  reactui:
+    depends_on:
+      - serverapi
+    container_name: client-ui-customer-phone
+    build: 
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    networks: 
+      - wpsite
+
+
+networks:
+  wpsite:
+volumes:
+  dbdata:
