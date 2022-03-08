@@ -33,6 +33,7 @@ Full-Stack java-React-PostgreSQL Customer Phone validation using Docker compose
  
  ###  In DataBase
  >  Dumped Some sample Customer
+ - In SQL Folder dump.sql file where you can free edit as your needs
 
  
  # To Build Docker and Compose
